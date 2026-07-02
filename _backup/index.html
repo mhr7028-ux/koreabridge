@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoreaBridge - Learn Korean & Visit Busan</title>
+    <!-- Google Fonts: Outfit & Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="logo-icon">🌉</span>
+                <div class="logo-text">
+                    <h1>KoreaBridge</h1>
+                    <p>한글브릿지</p>
+                </div>
+            </div>
+            <nav class="nav-tabs" id="main-nav">
+                <button class="nav-btn active" data-tab="tab-home">🏠 Home</button>
+                <button class="nav-btn" data-tab="tab-flyer">🎴 Street Flyer</button>
+                <button class="nav-btn" data-tab="tab-class">💻 Live Class</button>
+                <button class="nav-btn" data-tab="tab-aeb">🛡️ AEB Study</button>
+                <button class="nav-btn" data-tab="tab-busan">🌊 Busan Buddy</button>
+                <button class="nav-btn" data-tab="tab-community">💬 Community</button>
+                <button class="nav-btn" data-tab="tab-marketing">📈 SNS Deck</button>
+                <button class="nav-btn" id="btn-open-settings" style="color: var(--color-gold); border: 1px dashed var(--color-gold); font-weight: 700;">🔑 API Settings</button>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- 1. Home Section -->
+            <section id="tab-home" class="tab-content active">
+                <div class="hero-banner">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <span class="badge badge-gold">🇰🇷 LEARN KOREAN IN BUSAN</span>
+                        <h2>Speak Korean in 3 Months!</h2>
+                        <p>Not just Korean lessons — your local friend in Busan. Read Hangeul in 1 day, speak survival Korean in 3 months, and travel confidently.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="switchTab('tab-aeb')">Get Started (Free Trial)</button>
+                            <button class="btn btn-secondary" onclick="switchTab('tab-busan')">Explore Busan Buddy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AEB Method Philosophy -->
+                <div class="section-title text-center">
+                    <h2>🧠 The AEB Teaching Methodology</h2>
+                    <p class="section-subtitle">"Trick the brain, shout with your mouth, and engrave with your hands!"</p>
+                </div>
+                
+                <div class="grid-three-col">
+                    <div class="card glass-card text-center text-card">
+                        <div class="card-icon">🗣️</div>
+                        <h3>1. Speak (입으로 외쳐라)</h3>
+                        <p>Learn the Hangeul reading system in just 1 day. Recite survival Korean for 5 minutes daily. Sounding out sentences tricks your brain into active memorization.</p>
+                    </div>
+                    <div class="card glass-card text-center text-card">
+                        <div class="card-icon">✍️</div>
+                        <h3>2. Engrave (손으로 새겨라)</h3>
+                        <p>Physically write Korean characters by hand in a notebook. Upload a photo to let our AI evaluate your stroke order and reward you with personalized feedback.</p>
+                    </div>
+                    <div class="card glass-card text-center text-card">
+                        <div class="card-icon">📸</div>
+                        <h3>3. Share (인스타 과제)</h3>
+                        <p>Record a 10-second practice video daily, upload it to Instagram tagged with <code>@korea.bridge</code>, and receive direct encouragement and feedback from native teachers.</p>
+                    </div>
+                </div>
+
+                <!-- Multilingual Course & Pricing -->
+                <div class="section-title text-center" style="margin-top: 60px;">
+                    <h2>💰 Course Programs & Pricing</h2>
+                    <p class="section-subtitle">Affordable monthly subscription plans. Start your journey today.</p>
+                </div>
+
+                <div class="pricing-selector">
+                    <button class="lang-pill active" onclick="changePricingLang('en')">🇬🇧 English</button>
+                    <button class="lang-pill" onclick="changePricingLang('es')">🇪🇸 Español</button>
+                    <button class="lang-pill" onclick="changePricingLang('jp')">🇯🇵 日本語</button>
+                    <button class="lang-pill" onclick="changePricingLang('cn')">🇨🇳 中文</button>
+                    <button class="lang-pill" onclick="changePricingLang('id')">🇮🇩 Bahasa Indonesia</button>
+                    <button class="lang-pill" onclick="changePricingLang('my')">🇲🇾 Bahasa Melayu</button>
+                </div>
+
+                <div class="grid-three-col" id="pricing-grid">
+                    <!-- Dynamic rendering based on selected language in app.js -->
+                </div>
+
+                <!-- King Sejong & 1-day Hangeul reading -->
+                <div class="hero-split-card glass-card" style="margin-top: 60px;">
+                    <div class="split-image" style="background-image: url('assets/king_sejong.png');"></div>
+                    <div class="split-info">
+                        <span class="badge badge-primary">👑 King Sejong's Heritage</span>
+                        <h2>Hangeul: Created for Everyone</h2>
+                        <p>Invented in 1443 by King Sejong the Great, Hangeul was designed to be so simple that "a wise man can learn it in one morning, and a foolish man can learn it in ten days."</p>
+                        <p>Unlike other complex scripts, Hangeul is phonetic and scientifically structured. Our app simplifies the rules, allowing you to read any Korean poster, store sign, or menu in just 24 hours.</p>
+                        <button class="btn btn-gold" onclick="switchTab('tab-aeb')">Start 1-Day Alphabet Class</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Street Flyer Section -->
+            <section id="tab-flyer" class="tab-content">
+                <div class="section-title">
+                    <h2>🎴 Street Flyer & Ambassador QR Portal</h2>
+                    <p class="section-subtitle">Local youth guides can show this mobile screen to foreigners to promote the school and services, even if they don't speak foreign languages fluently!</p>
+                </div>
+
+                <div class="flyer-container">
+                    <div class="flyer-controls">
+                        <h3>🌐 Select Tourist's Language</h3>
+                        <div class="flyer-lang-buttons">
+                            <button class="lang-btn active" data-flyer-lang="en">🇬🇧 English</button>
+                            <button class="lang-btn" data-flyer-lang="es">🇪🇸 Español</button>
+                            <button class="lang-btn" data-flyer-lang="jp">🇯🇵 日本語</button>
+                            <button class="lang-btn" data-flyer-lang="cn">🇨🇳 中文</button>
+                            <button class="lang-btn" data-flyer-lang="id">🇮🇩 Indonesia</button>
+                            <button class="lang-btn" data-flyer-lang="my">🇲🇾 Melayu</button>
+                        </div>
+
+                        <div class="card glass-card guide-inst-box">
+                            <h4>💡 Guide Guide (청년 가이드 홍보 요령)</h4>
+                            <p>해운대나 광안리에서 외국인을 만났을 때, 인사(Hello!)를 건넨 뒤 이 화면을 보여주세요. 음성 재생 버튼을 누르면 외국인의 모국어로 인사 및 강좌 안내가 낭독됩니다!</p>
+                            <button class="btn btn-gold" id="btn-play-flyer-audio">🔊 Play Intro Voice (음성 안내 재생)</button>
+                        </div>
+                    </div>
+
+                    <!-- Virtual Phone Screen simulating the Flyer -->
+                    <div class="flyer-preview-phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="mobile-flyer-card">
+                                <div class="flyer-header">
+                                    <span>🌊 LEARN KOREAN IN BUSAN</span>
+                                    <h3 id="flyer-one-liner">"Want to Speak Korean in 3 Months? Scan Me!"</h3>
+                                </div>
+                                <div class="flyer-body">
+                                    <h4 class="flyer-title" id="flyer-trans-title">Learn Korean with a Native Korean Teacher</h4>
+                                    <ul class="flyer-bullets" id="flyer-trans-bullets">
+                                        <!-- Dynamic bullets -->
+                                    </ul>
+                                    <div class="flyer-promo-box">
+                                        <p>🎁 Free Travel Korean Guide & Busan Stays Info!</p>
+                                    </div>
+                                    <div class="flyer-qr-area">
+                                        <div class="qr-box">
+                                            <div id="flyer-qr-code"></div> <!-- Dynamic QR -->
+                                        </div>
+                                        <div class="qr-desc">
+                                            <p><strong>Scan QR Code</strong> to register for class, get local tips, or book a local buddy!</p>
+                                            <p class="qr-link">instagram.com/korea.bridge</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flyer-footer">
+                                    <p>Contact: mhr7028@gmail.com | Paypal: mhr73@naver.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Live Class Section (Google Meet + Gemini Translate Simulator) -->
+            <section id="tab-class" class="tab-content">
+                <div class="section-title">
+                    <h2>💻 Live Classroom Simulator</h2>
+                    <p class="section-subtitle">Real-time Korean lessons powered by Google Meet & Gemini 3.5 Live Translate Preview. Experience full control over translated subtitles.</p>
+                </div>
+
+                <div class="classroom-layout">
+                    <!-- Classroom screen -->
+                    <div class="classroom-screen card glass-card">
+                        <!-- Video Feed Area -->
+                        <div class="video-grid">
+                            <!-- Teacher's Video -->
+                            <div class="video-feed teacher-feed">
+                                <div class="video-placeholder">🧑‍🏫 Teacher Moon (Busan)</div>
+                                <div class="video-label">Teacher (Host)</div>
+                            </div>
+                            <!-- Student's Video -->
+                            <div class="video-feed student-feed">
+                                <div class="video-placeholder">🧑‍🎓 Foreign Student</div>
+                                <div class="video-label">Student (You)</div>
+                            </div>
+                        </div>
+
+                        <!-- Live Subtitles / Translations -->
+                        <div class="subtitles-container" id="subtitles-box">
+                            <div class="subtitle-line speaker-teacher">
+                                <span class="speaker-name">Teacher:</span>
+                                <span class="speech-korean">여러분 반가워요! 오늘 부산 광안리 맛집에 가보는 대화를 배워봅시다.</span>
+                            </div>
+                            <div class="subtitle-line translation-line" id="student-translation">
+                                <span class="speaker-name">Translation:</span>
+                                <span class="speech-translation">Hello everyone! Today, let's learn how to talk about visiting hot restaurants in Gwangalli, Busan.</span>
+                            </div>
+                        </div>
+
+                        <!-- Virtual Classroom HUD -->
+                        <div class="classroom-controls">
+                            <button class="control-btn mic-btn active">🎤 Mic</button>
+                            <button class="control-btn video-btn active">📷 Camera</button>
+                            <button class="control-btn meet-btn" onclick="window.open('https://meet.google.com/new', '_blank')">🚀 Start New Google Meet</button>
+                        </div>
+                    </div>
+
+                    <!-- Teacher & Student Control panel -->
+                    <div class="classroom-sidebar">
+                        <div class="card glass-card panel-card">
+                            <h3>🧑‍🏫 Teacher Controls (강사 통제권)</h3>
+                            <p class="panel-desc">The instructor can force subtitles ON/OFF for all students to test listening/reading habits.</p>
+                            <div class="control-group">
+                                <button class="btn btn-danger btn-full" id="btn-teacher-force-off">🚫 Force Translation OFF (전체 자막 강제 끄기)</button>
+                                <button class="btn btn-success btn-full" id="btn-teacher-force-on">👁️ Force Translation ON (전체 자막 강제 켜기)</button>
+                            </div>
+                            <div class="status-indicator">
+                                <span>Teacher State:</span>
+                                <span id="teacher-status-label" class="status-active">Normal Mode</span>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card panel-card">
+                            <h3>🧑‍🎓 Student Controls (학생 개별 설정)</h3>
+                            <p class="panel-desc">Students can toggle translation subtitles unless forced otherwise by the teacher.</p>
+                            <div class="control-group">
+                                <label class="switch-container">
+                                    <input type="checkbox" id="student-subtitle-toggle" checked>
+                                    <span class="slider round"></span>
+                                    <span class="switch-label">Show Translation Subtitles</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label for="subtitle-lang-select">Subtitle Language:</label>
+                                <select id="subtitle-lang-select" class="form-select">
+                                    <option value="en">English (영어)</option>
+                                    <option value="es">Español (스페인어)</option>
+                                    <option value="jp">日本語 (일본어)</option>
+                                    <option value="cn">中文 (중국어)</option>
+                                    <option value="id">Bahasa Indonesia (인니어)</option>
+                                    <option value="my">Bahasa Melayu (말레이어)</option>
+                                </select>
+                            </div>
+                            <hr class="divider">
+                            <button class="btn btn-primary btn-full" id="btn-simulate-next-sentence">Next Class Sentence (다음 문장 시뮬레이션)</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. AEB Study Section -->
+            <section id="tab-aeb" class="tab-content">
+                <div class="section-title">
+                    <h2>🛡️ AEB Hangeul Study Room</h2>
+                    <p class="section-subtitle">"Trick the brain, shout with your mouth, and engrave with your hands." Daily Korean recitation and writing workout.</p>
+                </div>
+
+                <div class="aeb-tabs">
+                    <button class="aeb-tab-btn active" data-aeb-pane="aeb-speaking">🎙️ 1. Speak (입으로 외치기)</button>
+                    <button class="aeb-tab-btn" data-aeb-pane="aeb-writing">✍️ 2. Engrave (손으로 새기기)</button>
+                    <button class="aeb-tab-btn" data-aeb-pane="aeb-loanwords">🍕 3. Loanwords Poster (외래어 간판)</button>
+                </div>
+
+                <!-- Pane A: Speaking & Speech recognition -->
+                <div id="aeb-speaking" class="aeb-pane active">
+                    <div class="grid-layout">
+                        <!-- Practice Card -->
+                        <div class="card glass-card">
+                            <h3>🎙️ AI Voice Recitation & Speech Check</h3>
+                            <p class="desc">Select a survival sentence, read it aloud, and let the AI score your pronunciation in real-time!</p>
+                            
+                            <div class="form-group">
+                                <label for="aeb-sentence-select">🎯 Select Daily Sentence (3-Month 100 Sentences Course):</label>
+                                <select id="aeb-sentence-select" class="form-select">
+                                    <!-- Populated dynamically in app.js -->
+                                </select>
+                            </div>
+
+                            <div class="practice-display-box">
+                                <h3 id="aeb-target-korean" class="kor-text-large">안녕하세요!</h3>
+                                <p id="aeb-target-roman" class="roman-text">An-nyeong-ha-se-yo!</p>
+                                <p id="aeb-target-meaning" class="meaning-text">Hello / Good morning</p>
+                            </div>
+
+                            <!-- Audio guide with speed control -->
+                            <div class="audio-control-bar">
+                                <button class="btn btn-secondary" id="btn-play-sentence-audio">🔊 Listen (듣기)</button>
+                                <div class="speed-selector">
+                                    <span>Speed:</span>
+                                    <button class="speed-btn active" data-speed="1.0">1.0x</button>
+                                    <button class="speed-btn" data-speed="0.75">0.75x (Slow)</button>
+                                </div>
+                            </div>
+
+                            <!-- Microphone speech recognition -->
+                            <div class="speech-controls" style="margin-top: 30px; text-align: center;">
+                                <button id="btn-record-aeb" class="btn btn-record btn-gold">
+                                    <span class="record-pulse"></span>
+                                    <span id="record-text-aeb">🎤 Start Reciting (외치기 시작)</span>
+                                </button>
+                                <p class="mic-status-text" id="aeb-mic-status">Ready to listen...</p>
+                            </div>
+
+                            <div class="stt-output-box">
+                                <h4>🗣️ What you said:</h4>
+                                <div id="aeb-stt-text" class="stt-preview">Turn on the mic and speak the Korean sentence above...</div>
+                            </div>
+
+                            <div class="stt-analysis-box">
+                                <h4>📊 AI Pronunciation Scorecard:</h4>
+                                <div id="aeb-analysis-result" class="analysis-output">
+                                    Score: -- | Match: --
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fairy Tales with No Batchim (받침 없는 동화) -->
+                        <div class="card glass-card">
+                            <h3>📖 Batchim-free Stories (받침 없는 동화)</h3>
+                            <p class="desc">A rapid learning method for reading. Stories written without final consonants (Batchim) to make reading effortless for beginners.</p>
+                            
+                            <div class="story-selector">
+                                <label for="story-select">Choose Story:</label>
+                                <select id="story-select" class="form-select">
+                                    <option value="story-1">아기와 나비 (Baby and Butterfly)</option>
+                                    <option value="story-2">어머니와 고기 (Mother and Fish)</option>
+                                </select>
+                            </div>
+
+                            <div class="story-player-card">
+                                <div class="story-text-container" id="story-viewer">
+                                    <!-- Populated dynamically in app.js -->
+                                </div>
+                                <div class="story-controls">
+                                    <button class="btn btn-secondary" id="btn-play-story">🔊 Read Full Story</button>
+                                    <button class="btn btn-primary" id="btn-next-story-sentence">Next Line ➡️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane B: Writing / Engraving Notebook upload -->
+                <div id="aeb-writing" class="aeb-pane">
+                    <div class="grid-layout">
+                        <!-- Handwriting Upload Form -->
+                        <div class="card glass-card">
+                            <h3>✍️ "Engrave with Your Hands" - Notebook Photo Upload</h3>
+                            <p class="desc">Writing Hangeul by hand creates motor memory, stimulating the brain to retain Korean patterns. Take a photo of your handwritten homework and upload it here!</p>
+                            
+                            <div class="hw-instruction-box">
+                                <h4>📝 Daily Writing Assignment:</h4>
+                                <p class="hw-task-text" id="aeb-hw-task">Write the sentence: <strong class="kor-text-medium" id="hw-task-sentence">안녕하세요!</strong> exactly 5 times in your notebook.</p>
+                            </div>
+
+                            <div class="file-upload-wrapper">
+                                <label for="hw-image-file" class="btn btn-secondary btn-full" style="cursor: pointer; border: 2px dashed var(--color-primary); padding: 20px;">
+                                    📸 Capture or Upload Homework Photo (.jpg, .png)
+                                </label>
+                                <input type="file" id="hw-image-file" accept="image/*" style="display: none;">
+                                <p id="hw-file-name" class="file-name-preview"></p>
+                            </div>
+
+                            <div class="hw-preview-box" id="hw-preview-container" style="display: none;">
+                                <img id="hw-preview-img" src="" alt="Homework Preview">
+                                <button class="btn btn-success btn-full" id="btn-submit-hw">🤖 Evaluate Homework with AI</button>
+                            </div>
+                        </div>
+
+                        <!-- AI Handwriting Feedback -->
+                        <div class="card glass-card">
+                            <h3>🎓 AI Teacher Feedback & Rewards</h3>
+                            <p class="desc">Our AI evaluates your stroke balance and Hangeul shapes, and rewards you with encouraging comments.</p>
+                            
+                            <div class="feedback-display" id="hw-feedback-display">
+                                <div class="empty-state">
+                                    <span class="icon">📝</span>
+                                    <p>Upload your handwritten homework on the left to receive AI feedback and earn points!</p>
+                                </div>
+                            </div>
+
+                            <div class="points-badge-box" id="points-box" style="display: none;">
+                                <h4>⭐ Lesson Points Earned</h4>
+                                <div class="points-display">
+                                    <span id="lesson-points-val">0</span> Points
+                                </div>
+                                <p class="points-reward-info">Convert these points to discounts on Busan youth guide packages!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane C: Hangeul Loanwords Visual Learning -->
+                <div id="aeb-loanwords" class="aeb-pane">
+                    <div class="section-title">
+                        <h3>🍕 Interactive Hangeul Loanwords (외래어 한글)</h3>
+                        <p class="section-subtitle">Many words in Korean are loanwords from English, Japanese, and Chinese written in Hangeul script. Learn Hangeul reading instantly with familiar vocabulary!</p>
+                    </div>
+
+                    <div class="loanwords-layout">
+                        <!-- Menu Image with hover zones -->
+                        <div class="loanwords-poster-area card glass-card">
+                            <div class="poster-image-wrapper">
+                                <img src="assets/loanwords_menu.png" alt="Korean Cafe Menu" class="poster-img">
+                                <!-- Interactive Hotspots over the image -->
+                                <div class="hotspot hotspot-coffee" style="top: 25%; left: 30%;" data-word="커피">커피</div>
+                                <div class="hotspot hotspot-cola" style="top: 38%; left: 30%;" data-word="콜라">콜라</div>
+                                <div class="hotspot hotspot-sandwich" style="top: 52%; left: 30%;" data-word="샌드위치">샌드위치</div>
+                                <div class="hotspot hotspot-icecream" style="top: 65%; left: 30%;" data-word="아이스크림">아이스크림</div>
+                            </div>
+                        </div>
+
+                        <!-- Details card for hovered/clicked word -->
+                        <div class="loanwords-details card glass-card">
+                            <h3>🔍 Vocabulary Inspector</h3>
+                            <p class="desc">Hover over the highlights on the cafe menu poster, or click any word below to inspect how English loanwords are written in Hangeul.</p>
+
+                            <div class="word-card-detail" id="word-detail-container">
+                                <div class="empty-state">
+                                    <span class="icon">💡</span>
+                                    <p>Hover over a highlighted word in the poster, or select a word below to begin.</p>
+                                </div>
+                            </div>
+
+                            <div class="word-bank-grid">
+                                <button class="btn btn-secondary word-pill" data-word="커피">커피 (Coffee)</button>
+                                <button class="btn btn-secondary word-pill" data-word="콜라">콜라 (Cola)</button>
+                                <button class="btn btn-secondary word-pill" data-word="샌드위치">샌드위치 (Sandwich)</button>
+                                <button class="btn btn-secondary word-pill" data-word="아이스크림">아이스크림 (Ice Cream)</button>
+                                <button class="btn btn-secondary word-pill" data-word="핸드폰">핸드폰 (Handphone)</button>
+                                <button class="btn btn-secondary word-pill" data-word="버스">버스 (Bus)</button>
+                                <button class="btn btn-secondary word-pill" data-word="아르바이트">아르바이트 (Arbeit/Part-time)</button>
+                                <button class="btn btn-secondary word-pill" data-word="초콜릿">초콜릿 (Chocolate)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Busan Buddy Section (Guides, Stays, and PayPal) -->
+            <section id="tab-busan" class="tab-content">
+                <div class="hero-banner" style="background-image: url('assets/busan_night.png'); min-height: 250px;">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <span class="badge badge-primary">🌊 Live in Busan for a Month</span>
+                        <h2>Meet Friendly Guides & Find Cheap Stays</h2>
+                        <p>Explore hot tourist spots like Haeundae, Gwangalli, Seomyeon, and Nampodong with native Busan youth guides while practicing your Korean!</p>
+                    </div>
+                </div>
+
+                <!-- Guide Booking / Matching -->
+                <div class="section-title">
+                    <h2>🤝 Register & Book a Busan Youth Guide</h2>
+                    <p class="section-subtitle">Create jobs for Busan local youth who act as language exchange buddies and local guides, facilitating smooth communication!</p>
+                </div>
+
+                <div class="buddy-layout">
+                    <!-- Left: Guide Search & List -->
+                    <div class="guides-container">
+                        <div class="search-bar-row">
+                            <input type="text" id="search-guide-input" class="form-input" placeholder="Search by name, language, or location (e.g. Haeundae)...">
+                            <button class="btn btn-primary" id="btn-register-guide-modal">Register as Guide (청년 가이드 등록)</button>
+                        </div>
+
+                        <div class="guides-grid" id="guides-list-view">
+                            <!-- Populated dynamically in app.js -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Accommodation & Dining Recommendations (Busan 2nd Stage Business) -->
+                    <div class="travel-tips-container card glass-card">
+                        <h3>🏢 Busan Stay & Eat (2차 사업 연계)</h3>
+                        <p class="desc">We recommend affordable guesthouses, local restaurants (Milmyeon, Dwaeji-gukbap), and hot tourist spots curated by local youth.</p>
+
+                        <div class="tips-accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">🏠 Cheap Stays (저렴한 숙소 추천)</button>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li><strong>Gwangalli Guesthouse Ocean View:</strong> $20/night. Cozy rooms, walking distance to Gwangalli beach.</li>
+                                        <li><strong>Haeundae Youth Hostel:</strong> $25/night. Great community, near Haeundae subway station.</li>
+                                        <li><strong>Seomyeon Station Coliving Studio:</strong> $400/month. Perfect for digital nomads doing a "one-month stay in Busan."</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">🍜 Must-Try Local Food (부산 로컬 맛집)</button>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li><strong>Dwaeji-gukbap (Pork Soup):</strong> Rich pork broth served with rice. Spot: Ssangdung-i Dwaeji-gukbap.</li>
+                                        <li><strong>Milmyeon (Wheat Noodles):</strong> Refreshing cold noodles, Busan style. Spot: Choryang Milmyeon.</li>
+                                        <li><strong>Jagalchi Seafood Market:</strong> Fresh sashimi and grilled fish at Korea's largest fish market.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">📍 Top Attractions (부산 추천 관광지)</button>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li><strong>Haeundae Beach & Blueline Park:</strong> Take the Sky Capsule along the scenic coastline.</li>
+                                        <li><strong>Gamcheon Culture Village:</strong> Colorful Lego-like houses stacked on coastal hills.</li>
+                                        <li><strong>Gwangalli Beach:</strong> View the illuminated Gwangandaegyo Bridge and the Saturday Drone Show.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="divider">
+
+                        <!-- Booking Status Summary -->
+                        <div class="booking-status-box" id="booking-summary" style="display: none;">
+                            <h4>📅 Pending Guide Booking</h4>
+                            <p id="booking-details-txt">Waiting for payment...</p>
+                            <!-- PayPal payment trigger button -->
+                            <div class="paypal-trigger-area">
+                                <button class="btn btn-paypal btn-full" id="btn-pay-paypal">
+                                    <span class="paypal-logo"><i>Pay</i><i>Pal</i></span> Book & Deposit Now
+                                </button>
+                                <p class="paypal-info">Secured transaction to <strong>mhr73@naver.com</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Community Section (YouTube & SNS Review Board with Rank Sort) -->
+            <section id="tab-community" class="tab-content">
+                <div class="section-title">
+                    <h2>💬 Traveler Stories & SNS Feed</h2>
+                    <p class="section-subtitle">Read stories of foreigners who visited Busan, fell in love with Korea, and learned Korean. The most liked and viewed stories naturally float to the top!</p>
+                </div>
+
+                <div class="community-layout">
+                    <!-- Right: Share your experience form -->
+                    <div class="community-sidebar">
+                        <div class="card glass-card form-card">
+                            <h3>✍️ Share Your Story</h3>
+                            <p class="desc">Have you traveled to Korea or studied Korean? Post your YouTube video link or travel photos here to inspire others!</p>
+                            
+                            <form id="form-add-story">
+                                <div class="form-group">
+                                    <label for="story-author">Your Name:</label>
+                                    <input type="text" id="story-author" class="form-input" placeholder="e.g. Sarah Connor (USA)" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="story-title">Title:</label>
+                                    <input type="text" id="story-title" class="form-input" placeholder="e.g. My amazing month in Busan!" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="story-youtube">YouTube Video Link (Optional):</label>
+                                    <input type="url" id="story-youtube" class="form-input" placeholder="https://www.youtube.com/watch?v=...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="story-content">Your Story / Experience:</label>
+                                    <textarea id="story-content" class="form-textarea" placeholder="Tell us how Hangeul and Busan changed your life..." rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">Post Story (글 게시하기)</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Left: Trending Stories Feed -->
+                    <div class="community-feed">
+                        <div class="feed-header-row">
+                            <h3>🔥 Trending Stories (인기 게시글)</h3>
+                            <div class="sorting-indicator">🏆 Sorted by Likes + Views (실시간 인기순 정렬)</div>
+                        </div>
+
+                        <div class="stories-list" id="stories-feed-list">
+                            <!-- Populated dynamically in app.js -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Marketing & SNS Strategy Section -->
+            <section id="tab-marketing" class="tab-content">
+                <div class="section-title text-center">
+                    <h2>📈 SNS Viral Marketing Strategy Deck</h2>
+                    <p class="section-subtitle">How we promote KoreaBridge globally to attract students and tourists using social media.</p>
+                </div>
+
+                <div class="marketing-grid">
+                    <!-- Instagram/TikTok Strategy Card -->
+                    <div class="card glass-card">
+                        <h3>📱 Viral Video Homework Formula</h3>
+                        <p class="desc">Our core marketing loop is fueled by student-generated content on Instagram and TikTok.</p>
+                        
+                        <div class="marketing-steps">
+                            <div class="step-badge-row">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <h4>Online Class</h4>
+                                    <p>Students take a weekly Google Meet lesson focusing on Hangeul or survival dialogues.</p>
+                                </div>
+                            </div>
+                            <div class="step-badge-row">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <h4>Daily 10-Min Practice</h4>
+                                    <p>Students practice speaking Korean for 10 minutes a day using our AEB speaking card.</p>
+                                </div>
+                            </div>
+                            <div class="step-badge-row">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <h4>Upload Reels/Shorts</h4>
+                                    <p>Students record themselves and post it, tagging <code>@korea.bridge</code> and using our dynamic hashtags.</p>
+                                </div>
+                            </div>
+                            <div class="step-badge-row">
+                                <span class="step-num">4</span>
+                                <div>
+                                    <h4>Viral Reach & Rewards</h4>
+                                    <p>Their friends see it, causing viral growth. The teacher leaves encouraging feedback, and students earn points for guide discounts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketing Assistant Script Generator -->
+                    <div class="card glass-card">
+                        <h3>🤖 AI Instagram Script Helper</h3>
+                        <p class="desc">Generate copy and reels video outlines for your daily homework to post on Instagram!</p>
+                        
+                        <div class="form-group">
+                            <label for="mkt-language">Target Language for Script:</label>
+                            <select id="mkt-language" class="form-select">
+                                <option value="en">English (영어권)</option>
+                                <option value="es">Español (스페인어권)</option>
+                                <option value="jp">日本語 (일본어권)</option>
+                                <option value="cn">中文 (중국어권)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mkt-topic">Reels Topic Idea:</label>
+                            <select id="mkt-topic" class="form-select">
+                                <option value="hangeul-1day">Read Hangeul in 1 Day Challenge</option>
+                                <option value="busan-nomad">Why I want to live in Busan for a month</option>
+                                <option value="loanword-fun">English words that Koreans already know (Konglish)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-gold btn-full" id="btn-generate-mkt-script">Generate Script & Copy</button>
+
+                        <div class="script-output-box" id="mkt-script-result" style="display: none;">
+                            <div class="script-card">
+                                <h4>📝 Generated Script Outline:</h4>
+                                <div id="mkt-script-body" class="script-body-text"></div>
+                                <button class="btn btn-secondary btn-small" id="btn-copy-script">📋 Copy to Clipboard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>© 2026 KoreaBridge. All Rights Reserved. Built for Hae-ryong Moon. PayPal Merchant: mhr73@naver.com</p>
+        </footer>
+    </div>
+
+    <!-- Modal 1: Register as Guide (청년 가이드 등록 모달) -->
+    <div id="modal-register-guide" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>✨ Register as Busan Youth Guide (청년 가이드 등록)</h2>
+                <button class="modal-close" id="btn-close-guide-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-register-guide">
+                    <div class="form-group">
+                        <label for="guide-name">Full Name (성함):</label>
+                        <input type="text" id="guide-name" class="form-input" placeholder="e.g. Min-woo Kim (김민우)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guide-age">Age (나이):</label>
+                        <input type="number" id="guide-age" class="form-input" placeholder="e.g. 24" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guide-lang">Languages Spoken (가능 외국어):</label>
+                        <input type="text" id="guide-lang" class="form-input" placeholder="e.g. English, Basic Japanese" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guide-area">Primary Area in Busan (활동 가능 지역):</label>
+                        <select id="guide-area" class="form-select">
+                            <option value="Haeundae (해운대)">Haeundae (해운대)</option>
+                            <option value="Gwangalli (광안리)">Gwangalli (광안리)</option>
+                            <option value="Seomyeon (서면)">Seomyeon (서면)</option>
+                            <option value="Nampo (남포동)">Nampo (남포동)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guide-intro">Self Introduction (한 줄 소개 - 다국어 자동 변환 지원):</label>
+                        <textarea id="guide-intro" class="form-textarea" placeholder="Describe your hobbies, favorite Busan spots, and friendliness..." rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-full">Register Guide (가이드 신청 완료)</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: PayPal Payment Sandbox Modal -->
+    <div id="modal-paypal-checkout" class="modal-overlay">
+        <div class="modal-card paypal-modal-card">
+            <div class="modal-header">
+                <h2>💳 PayPal Secure Checkout</h2>
+                <button class="modal-close" id="btn-close-paypal-modal">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="paypal-modal-header">
+                    <span class="paypal-logo"><i>Pay</i><i>Pal</i></span>
+                </div>
+                
+                <div class="paypal-checkout-summary">
+                    <p>Booking with Guide: <strong id="paypal-book-guide-name">-</strong></p>
+                    <p>Service: <strong>1-Day Local Busan Tour & Buddy Meetup</strong></p>
+                    <div class="paypal-price-tag" id="paypal-price-tag">$40.00 USD</div>
+                </div>
+
+                <div class="paypal-btn-options">
+                    <!-- Simulates real PayPal checkout button -->
+                    <button class="btn btn-paypal-yellow btn-full" id="btn-paypal-login-pay">
+                        💛 Pay with PayPal Account
+                    </button>
+                    <button class="btn btn-paypal-blue btn-full" id="btn-paypal-card-pay">
+                        💙 Pay with Debit or Credit Card
+                    </button>
+                </div>
+                
+                <p class="paypal-modal-footer">Merchant Account: <strong>mhr73@naver.com</strong>. You will be redirected to complete the actual payment, and returned to KoreaBridge to finalize booking.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Payment Success / Confirmed Booking -->
+    <div id="modal-payment-success" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>🎉 Payment Successful!</h2>
+                <button class="modal-close" id="btn-close-success-modal">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <span class="success-icon">✓</span>
+                <h3>Your booking is confirmed!</h3>
+                <p id="success-booking-detail">You have booked a tour with Kim Min-woo in Gwangalli.</p>
+                <div class="receipt-box">
+                    <p>Transaction ID: <code id="receipt-tx-id">PAYID-LNW7382017</code></p>
+                    <p>Recipient: <code>mhr73@naver.com</code></p>
+                    <p>Confirmation email sent to teacher: <code>mhr7028@gmail.com</code></p>
+                </div>
+                <p style="margin-top: 15px;">Your Busan local buddy will contact you soon on Instagram/Email. Prepare to speak Korean!</p>
+                <button class="btn btn-primary btn-full" id="btn-success-close">Awesome!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: API Key Settings Modal -->
+    <div id="modal-settings" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>🔑 Google Gemini API Settings</h2>
+                <button class="modal-close" id="btn-close-settings-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="input-gemini-apikey">Google Gemini API Key:</label>
+                    <input type="password" id="input-gemini-apikey" class="form-input" placeholder="Paste your API key here (AIzaSy...)">
+                    <p class="desc" style="font-size: 11.5px; color: var(--text-secondary); margin-top: 5px; line-height: 1.4;">
+                        발급처: <a href="https://aistudio.google.com/" target="_blank" style="color: var(--color-secondary); font-weight: 700; text-decoration: underline;">Google AI Studio</a>. 새로운 전용 키를 사용하면 실제 이미지 한글 판독(OCR) 및 맞춤형 인스타 릴스 스크립트 실시간 창작 기능이 활성화됩니다.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="btn btn-primary" id="btn-save-settings" style="flex: 1;">Save API Key</button>
+                    <button class="btn btn-secondary" id="btn-clear-settings">Clear Key</button>
+                </div>
+                <p id="settings-status-msg" style="font-size: 13px; margin-top: 12px; text-align: center; font-weight: 600; display: none;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

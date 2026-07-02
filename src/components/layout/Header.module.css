@@ -1,0 +1,122 @@
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: rgba(10, 11, 16, 0.85);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px #7c4dff);
+}
+
+.logoText h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #f1f3f9 30%, #00e5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.logoText p {
+  font-size: 11px;
+  color: #718096;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.navTabs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navGroupTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a0aec0;
+  padding: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navDivider {
+  width: 1px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #a0aec0;
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.navBtn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f1f3f9;
+}
+
+.navBtn.active {
+  background: rgba(124, 77, 255, 0.2);
+  border: 1px solid rgba(124, 77, 255, 0.5);
+  color: #f1f3f9;
+  box-shadow: 0 4px 12px rgba(124, 77, 255, 0.15);
+}
+
+.authArea {
+  display: flex;
+}
+
+.loginBtn {
+  background-color: transparent;
+  border: 1px dashed #ffc107;
+  color: #ffc107;
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.loginBtn:hover {
+  background-color: rgba(255, 193, 7, 0.1);
+}

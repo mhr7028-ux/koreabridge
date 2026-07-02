@@ -1,0 +1,235 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.heroSection {
+  position: relative;
+  padding: 60px 40px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.1), rgba(0, 229, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, rgba(124, 77, 255, 0.15) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.badgeGold {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.heroContent h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, #a0aec0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroContent p {
+  font-size: 18px;
+  color: #a0aec0;
+  line-height: 1.6;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #7c4dff 0%, #5e35b1 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(124, 77, 255, 0.3);
+}
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124, 77, 255, 0.4);
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f3f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sectionTitle h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.sectionTitle p {
+  color: #a0aec0;
+  font-size: 16px;
+}
+
+.gridThreeCol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: rgba(18, 19, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cardIcon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #00e5ff;
+}
+
+.card p {
+  color: #a0aec0;
+  font-size: 15px;
+}
+
+.langSelector {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.langPill {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a0aec0;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeLang {
+  background: rgba(124, 77, 255, 0.2);
+  border-color: #7c4dff;
+  color: white;
+}
+
+.pricingCard {
+  background: rgba(18, 19, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.premiumCard {
+  border-color: #7c4dff;
+  background: linear-gradient(180deg, rgba(124, 77, 255, 0.05) 0%, rgba(18, 19, 28, 0.8) 100%);
+  transform: scale(1.02);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #7c4dff, #00e5ff);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.pricingCard h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.priceWrap {
+  margin-bottom: 20px;
+}
+.price {
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+}
+.period {
+  color: #a0aec0;
+  font-size: 16px;
+}
+
+.desc {
+  color: #718096;
+  font-size: 14px;
+  margin-bottom: 30px;
+  min-height: 40px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+  flex: 1;
+}
+.features li {
+  margin-bottom: 12px;
+  color: #e2e8f0;
+  font-size: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.pricingCard button {
+  width: 100%;
+}

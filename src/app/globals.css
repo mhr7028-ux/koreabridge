@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-primary: #0a0b10;
+  --bg-secondary: #12131c;
+  --bg-tertiary: #1b1c28;
+  --text-primary: #f1f3f9;
+  --text-secondary: #a0aec0;
+  --text-muted: #718096;
+  
+  --color-primary: #7c4dff;
+  --color-primary-glow: rgba(124, 77, 255, 0.25);
+  --color-secondary: #00e5ff;
+  --color-secondary-glow: rgba(0, 229, 255, 0.2);
+  --color-gold: #ffc107;
+  --color-gold-glow: rgba(255, 193, 7, 0.25);
+  --color-success: #00e676;
+  --color-success-glow: rgba(0, 230, 118, 0.2);
+  --color-danger: #ff1744;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(18, 19, 28, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  
+  --font-primary: 'Outfit', sans-serif;
+  --font-korean: 'Noto Sans KR', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  padding: 40px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
