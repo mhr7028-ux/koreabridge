@@ -1,6 +1,8 @@
 import styles from './page.module.css';
 import { getClassInfo, getMaterials } from '@/app/actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LiveClassPage() {
   const classInfo = await getClassInfo();
   const classMaterials = await getMaterials();
