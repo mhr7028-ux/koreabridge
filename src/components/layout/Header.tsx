@@ -50,15 +50,20 @@ export default function Header() {
           <span style={{ color: '#9ca3af' }}>Loading...</span>
         ) : session ? (
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-            <span style={{ color: '#fff' }}>Hi, {session.user?.name}!</span>
-            {(session.user as any)?.role === 'admin' && (
-              <Link href="/admin" style={{ background: '#ffc107', padding: '8px 15px', borderRadius: '8px', color: '#000', fontWeight: 'bold', textDecoration: 'none' }}>
-                🛡️ Admin
-              </Link>
-            )}
+            <span style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Hi, 
+              {(session.user as any)?.role === 'admin' ? (
+                <Link href="/admin" style={{ color: '#ffc107', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px', borderRadius: '6px', background: 'rgba(255, 193, 7, 0.1)' }} title="Go to Admin Panel">
+                  <span>🛡️</span>
+                  <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+                </Link>
+              ) : (
+                <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+              )}!
+            </span>
             <button 
               onClick={() => signOut()} 
-              style={{ background: 'transparent', border: '1px solid #ef4444', color: '#ef4444', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer' }}
+              style={{ background: 'transparent', border: '1px solid rgba(239, 68, 68, 0.5)', color: '#ef4444', padding: '6px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' }}
             >
               Logout
             </button>
