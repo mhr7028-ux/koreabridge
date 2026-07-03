@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Providers from '@/components/Providers';
+import SNSOnboardingModal from '@/components/SNSOnboardingModal';
 
 export const metadata: Metadata = {
   title: 'KoreaBridge - Learn Korean & Visit Busan',
@@ -22,6 +23,7 @@ export default function RootLayout({
             <main className="app-main">
               {children}
             </main>
+            <SNSOnboardingModal />
           </div>
         </Providers>
       </body>

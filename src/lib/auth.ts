@@ -40,20 +40,27 @@ export const authOptions: NextAuthOptions = {
     }
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      // If the user logs in and their email matches the admin email, give them the admin role
-      if (user) {
-        if (user.email === ADMIN_EMAIL) {
-          token.role = "admin";
-        } else {
-          token.role = "member";
+    async jwt({ token, user, account, profile }) {
+      // Fetch fresh user data from DB on each token update or initial sign in
+      if (token.email) {
+        const dbUser = await prisma.user.findUnique({
+          where: { email: token.email }
+        });
+        
+        if (dbUser) {
+          token.role = dbUser.role;
+          token.snsType = dbUser.snsType;
+          token.snsId = dbUser.snsId;
         }
       }
+
       return token;
     },
     async session({ session, token }) {
       if (session?.user) {
         (session.user as any).role = token.role;
+        (session.user as any).snsType = token.snsType;
+        (session.user as any).snsId = token.snsId;
       }
       return session;
     }
