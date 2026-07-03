@@ -17,10 +17,10 @@ export default function Header() {
           <p>한글브릿지</p>
         </div>
       </div>
-      
+
       <nav className={styles.navTabs}>
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle}>📚 Study</span>
+          <span className={styles.navGroupTitle}> Study</span>
           <Link href="/" className={`${styles.navBtn} ${pathname === '/' ? styles.active : ''}`}>
             🏠 Home
           </Link>
@@ -35,7 +35,7 @@ export default function Header() {
         <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle}>🌊 Travel</span>
+          <span className={styles.navGroupTitle}> Travel</span>
           <Link href="/travel/buddy" className={`${styles.navBtn} ${pathname.includes('/buddy') ? styles.active : ''}`}>
             🤝 Busan Buddy
           </Link>
@@ -51,7 +51,7 @@ export default function Header() {
         ) : session ? (
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
             <span style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              Hi, 
+              Hi,
               {(session.user as any)?.role === 'admin' ? (
                 <Link href="/admin" style={{ color: '#ffc107', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px', borderRadius: '6px', background: 'rgba(255, 193, 7, 0.1)' }} title="Go to Admin Panel">
                   <span>🛡️</span>
@@ -61,8 +61,8 @@ export default function Header() {
                 <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
               )}!
             </span>
-            <button 
-              onClick={() => signOut()} 
+            <button
+              onClick={() => signOut()}
               style={{ background: 'transparent', border: '1px solid rgba(239, 68, 68, 0.5)', color: '#ef4444', padding: '6px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' }}
             >
               Logout
