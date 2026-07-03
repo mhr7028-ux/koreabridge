@@ -13,11 +13,11 @@ export default function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
-          <span className={styles.badgeGold}>🇰🇷 LEARN KOREAN IN BUSAN</span>
-          <h2>Speak Korean in 3 Months!</h2>
-          <p>
-            Not just Korean lessons — your local friend in Busan. Read Hangeul in 1 day, 
-            speak survival Korean in 3 months, and travel confidently.
+          <span className={styles.badgeGold}>🇰🇷 Dive into Busan, Speak Korean! 안녕하세요!</span>
+          <h2 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '15px', color: '#fff' }}>Yaho Busan~~ <span style={{ color: '#fbbf24' }}>안녕하세요!</span></h2>
+          <p style={{ fontSize: '1.2rem', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto 30px', color: '#e5e7eb' }}>
+            Remember when BTS shouted <strong>'Yaho Busan!'</strong>? <br />
+            Now it's your turn to experience the energy of Busan with KoreaBridge!
           </p>
           <div className={styles.heroActions}>
             <button className={styles.btnPrimary}>Get Started (Free Trial)</button>
