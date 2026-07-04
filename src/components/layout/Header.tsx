@@ -10,12 +10,10 @@ export default function Header() {
 
   return (
     <header className={styles.appHeader}>
-      <div className={styles.logoArea}>
-        <span className={styles.logoIcon}>🌉</span>
-        <div className={styles.logoText}>
-          <h1>KoreaBridge</h1>
-          <p>한글브릿지</p>
-        </div>
+      <div className={styles.logoArea} style={{ background: '#fff', padding: '5px 15px', borderRadius: '12px', display: 'flex', alignItems: 'center' }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img src="/logo.png" alt="KoreaBridge Logo" style={{ height: '40px', width: 'auto' }} />
+        </Link>
       </div>
 
       <nav className={styles.navTabs}>
@@ -25,7 +23,7 @@ export default function Header() {
             🏠 Home
           </Link>
           <Link href="/study/aeb" className={`${styles.navBtn} ${pathname.includes('/aeb') ? styles.active : ''}`}>
-            🛡️ AEB Study
+            🛡️ KB Study
           </Link>
           <Link href="/study/class" className={`${styles.navBtn} ${pathname.includes('/class') ? styles.active : ''}`}>
             💻 Live Class
