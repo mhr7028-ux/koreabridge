@@ -39,8 +39,8 @@ export default function Header() {
           <Link href="/travel/buddy" className={`${styles.navBtn} ${pathname.includes('/buddy') ? styles.active : ''}`}>
             🤝 Busan Buddy
           </Link>
-          <Link href="/travel/flyer" className={`${styles.navBtn} ${pathname.includes('/flyer') ? styles.active : ''}`}>
-            🎴 Flyer
+          <Link href="/travel/festival" className={`${styles.navBtn} ${pathname.includes('/festival') ? styles.active : ''}`}>
+            🎉 Festival
           </Link>
         </div>
       </nav>
