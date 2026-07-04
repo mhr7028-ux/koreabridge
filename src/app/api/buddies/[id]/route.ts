@@ -3,7 +3,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const session = await getServerSession(authOptions);
     if (!session || (session.user as any).role !== 'admin') {
@@ -12,7 +13,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
     const { isActive } = await request.json();
     const updatedBuddy = await prisma.buddy.update({
-      where: { id: params.id },
+      where: { id },
       data: { isActive },
     });
 
@@ -23,7 +24,8 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const session = await getServerSession(authOptions);
     if (!session || (session.user as any).role !== 'admin') {
@@ -31,7 +33,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     }
 
     await prisma.buddy.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ success: true });
