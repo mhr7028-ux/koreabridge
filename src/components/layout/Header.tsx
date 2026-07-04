@@ -10,9 +10,9 @@ export default function Header() {
 
   return (
     <header className={styles.appHeader}>
-      <div className={styles.logoArea} style={{ background: '#fff', padding: '5px 15px', borderRadius: '12px', display: 'flex', alignItems: 'center' }}>
+      <div className={styles.logoArea} style={{ background: '#fff', padding: '2px 6px', borderRadius: '8px', display: 'flex', alignItems: 'center', marginRight: '-10px' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <img src="/logo.png" alt="KoreaBridge Logo" style={{ height: '40px', width: 'auto' }} />
+          <img src="/logo.png" alt="KoreaBridge Logo" style={{ height: '36px', width: 'auto' }} />
         </Link>
       </div>
 
@@ -59,7 +59,9 @@ export default function Header() {
                   <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
                 </Link>
               ) : (
-                <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+                <Link href="/admin" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }} title="Go to Admin Panel (Requires Permission)">
+                  <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+                </Link>
               )}!
             </span>
             <button
