@@ -7,6 +7,11 @@ import SNSOnboardingModal from '@/components/SNSOnboardingModal';
 export const metadata: Metadata = {
   title: 'KoreaBridge - Learn Korean & Visit Busan',
   description: 'Learn Korean with a native teacher in Busan.',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({

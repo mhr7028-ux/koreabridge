@@ -1,0 +1,21 @@
+{
+  "name": "KoreaBridge",
+  "short_name": "KoreaBridge",
+  "description": "Learn Korean with KoreaBridge",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
