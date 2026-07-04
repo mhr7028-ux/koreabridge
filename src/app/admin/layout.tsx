@@ -26,6 +26,7 @@ export default async function AdminLayout({
           <Link href="/admin/users" style={{ color: '#e5e7eb', textDecoration: 'none' }}>User Management</Link>
           <Link href="/admin/buddies" style={{ color: '#e5e7eb', textDecoration: 'none' }}>🤝 Busan Buddy Management</Link>
           <Link href="/admin/promotions" style={{ color: '#e5e7eb', textDecoration: 'none' }}>🎉 Promotions (Festivals)</Link>
+          <Link href="/admin/inquiries" style={{ color: '#e5e7eb', textDecoration: 'none' }}>📞 Customer Inquiries</Link>
           <Link href="/" style={{ color: '#9ca3af', textDecoration: 'none', marginTop: '30px' }}>← Back to Website</Link>
         </nav>
       </aside>

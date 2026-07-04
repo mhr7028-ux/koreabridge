@@ -124,3 +124,13 @@ model MatchRequest {
   status         String   @default("PENDING") // PENDING, CONTACTED, COMPLETED
   createdAt      DateTime @default(now())
 }
+
+model Inquiry {
+  id             String   @id @default(cuid())
+  name           String
+  email          String
+  subject        String
+  message        String
+  status         String   @default("PENDING") // PENDING, RESOLVED
+  createdAt      DateTime @default(now())
+}
