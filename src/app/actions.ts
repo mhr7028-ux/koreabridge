@@ -24,12 +24,12 @@ export async function getClassInfo() {
   return info;
 }
 
-export async function updateMeetLink(newLink: string) {
+export async function updateClassInfo(data: { date?: string, time?: string, topic?: string, teacher?: string, meetLink?: string }) {
   const info = await prisma.classInfo.findFirst();
   if (info) {
     await prisma.classInfo.update({
       where: { id: info.id },
-      data: { meetLink: newLink }
+      data
     });
   }
   revalidatePath('/admin/classes');

@@ -58,7 +58,13 @@ model User {
   snsType       String?
   snsId         String?
 
+  // Gamification fields
+  points        Int       @default(0)
+  streak        Int       @default(0)
+  lastCheckIn   DateTime?
+
   createdAt     DateTime  @default(now())
+  homeworks     HomeworkSubmission[]
 }
 
 model VerificationToken {
@@ -134,4 +140,40 @@ model Inquiry {
   message        String
   status         String   @default("PENDING") // PENDING, RESOLVED
   createdAt      DateTime @default(now())
+}
+
+model StudyMethod {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  videoUrl  String?
+  pdfUrl    String?
+  audioUrl  String?
+  pptUrl    String?
+  createdAt DateTime @default(now())
+}
+
+model HomeworkGallery {
+  id          String   @id @default(cuid())
+  userName    String
+  userImage   String?
+  title       String
+  score       Int      @default(100)
+  feedback    String
+  transcript  String
+  mediaUrl    String
+  mediaType   String
+  likes       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model HomeworkSubmission {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        String   // "INSTAGRAM" or "AI_EVALUATION"
+  url         String?  // The instagram link if applicable
+  status      String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  pointsAwarded Int    @default(0)
+  createdAt   DateTime @default(now())
 }

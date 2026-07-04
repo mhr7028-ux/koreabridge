@@ -1,15 +1,21 @@
 'use client';
 import { useState, useRef } from 'react';
-import { updateMeetLink, addMaterial, deleteMaterial } from '@/app/actions';
+import { updateClassInfo, addMaterial, deleteMaterial } from '@/app/actions';
 
 export default function AdminClassesClient({ initialClassInfo, initialMaterials }: any) {
-  const [meetLink, setMeetLink] = useState(initialClassInfo.meetLink);
+  const [classInfo, setClassInfo] = useState({
+    date: initialClassInfo.date,
+    time: initialClassInfo.time,
+    topic: initialClassInfo.topic,
+    teacher: initialClassInfo.teacher,
+    meetLink: initialClassInfo.meetLink
+  });
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSaveLink = async () => {
-    const res = await updateMeetLink(meetLink);
-    if (res.success) alert('Meet Link updated successfully!');
+  const handleSaveInfo = async () => {
+    const res = await updateClassInfo(classInfo);
+    if (res.success) alert('클래스 정보가 성공적으로 업데이트되었습니다!');
   };
 
   const handleAddUrlLink = async () => {
@@ -67,19 +73,47 @@ export default function AdminClassesClient({ initialClassInfo, initialMaterials 
     <div>
       <h1 style={{ fontSize: '28px', marginBottom: '20px' }}>Manage Classes & Materials</h1>
       
-      {/* Edit Meet Link Section */}
+      {/* Edit Class Info Section */}
       <section style={{ background: '#111827', padding: '24px', borderRadius: '12px', marginBottom: '30px' }}>
-        <h2 style={{ fontSize: '20px', marginBottom: '15px', color: '#ffc107' }}>Next Live Class Link</h2>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <input 
-            type="text" 
-            value={meetLink}
-            onChange={(e) => setMeetLink(e.target.value)}
-            style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }}
-          />
-          <button onClick={handleSaveLink} style={{ padding: '10px 20px', background: '#00e676', color: '#000', fontWeight: 'bold', borderRadius: '8px', border: 'none', cursor: 'pointer' }}>
-            Update Link
-          </button>
+        <h2 style={{ fontSize: '20px', marginBottom: '15px', color: '#ffc107' }}>다음 라이브 클래스 정보</h2>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <div style={{ flex: 1 }}>
+              <label style={{ display: 'block', color: '#9ca3af', marginBottom: '5px', fontSize: '14px' }}>날짜 (Date)</label>
+              <input type="text" value={classInfo.date} onChange={(e) => setClassInfo({...classInfo, date: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label style={{ display: 'block', color: '#9ca3af', marginBottom: '5px', fontSize: '14px' }}>시간 (Time)</label>
+              <input type="text" value={classInfo.time} onChange={(e) => setClassInfo({...classInfo, time: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }} />
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <div style={{ flex: 2 }}>
+              <label style={{ display: 'block', color: '#9ca3af', marginBottom: '5px', fontSize: '14px' }}>주제 (Topic)</label>
+              <input type="text" value={classInfo.topic} onChange={(e) => setClassInfo({...classInfo, topic: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label style={{ display: 'block', color: '#9ca3af', marginBottom: '5px', fontSize: '14px' }}>선생님 (Teacher)</label>
+              <input type="text" value={classInfo.teacher} onChange={(e) => setClassInfo({...classInfo, teacher: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }} />
+            </div>
+          </div>
+
+          <div>
+            <label style={{ display: 'block', color: '#9ca3af', marginBottom: '5px', fontSize: '14px' }}>구글 미트 링크 (Meet Link)</label>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <input 
+                type="text" 
+                value={classInfo.meetLink}
+                onChange={(e) => setClassInfo({...classInfo, meetLink: e.target.value})}
+                style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #374151', background: '#1f2937', color: 'white' }}
+              />
+              <button onClick={handleSaveInfo} style={{ padding: '10px 20px', background: '#00e676', color: '#000', fontWeight: 'bold', borderRadius: '8px', border: 'none', cursor: 'pointer' }}>
+                정보 저장하기
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

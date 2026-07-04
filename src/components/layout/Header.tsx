@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import { motion } from 'framer-motion';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -9,8 +10,14 @@ export default function Header() {
   const { data: session, status } = useSession();
 
   return (
-    <header className={styles.appHeader}>
-      <div className={styles.logoArea} style={{ background: '#fff', padding: '2px 6px', borderRadius: '8px', display: 'flex', alignItems: 'center', marginRight: '-10px' }}>
+    <motion.header 
+      className={`${styles.appHeader} glass-panel`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      style={{ borderBottom: '1px solid var(--glass-border)' }}
+    >
+      <div className={styles.logoArea} style={{ background: '#fff', padding: '2px', borderRadius: '4px', display: 'flex', alignItems: 'center', marginRight: '10px' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img src="/logo.png" alt="KoreaBridge Logo" style={{ height: '36px', width: 'auto' }} />
         </Link>
@@ -18,7 +25,7 @@ export default function Header() {
 
       <nav className={styles.navTabs}>
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle}> Study</span>
+          <span className={styles.navGroupTitle} style={{ marginLeft: 0 }}>Study</span>
           <Link href="/" className={`${styles.navBtn} ${pathname === '/' ? styles.active : ''}`}>
             🏠 Home
           </Link>
@@ -27,6 +34,9 @@ export default function Header() {
           </Link>
           <Link href="/study/class" className={`${styles.navBtn} ${pathname.includes('/class') ? styles.active : ''}`}>
             💻 Live Class
+          </Link>
+          <Link href="/study/gallery" className={`${styles.navBtn} ${pathname.includes('/gallery') ? styles.active : ''}`}>
+            🎬 Gallery
           </Link>
         </div>
 
@@ -59,10 +69,12 @@ export default function Header() {
                   <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
                 </Link>
               ) : (
-                <Link href="/admin" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }} title="Go to Admin Panel (Requires Permission)">
-                  <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+                <Link href="/dashboard" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.1)', padding: '4px 10px', borderRadius: '6px' }} title="Go to My Page">
+                  <span>🎮</span>
+                  <span style={{ fontWeight: 'bold' }}>{session.user?.name} (My Page)</span>
                 </Link>
-              )}!
+              )}
+              <span style={{ marginLeft: '5px' }}>!</span>
             </span>
             <button
               onClick={() => signOut()}
@@ -75,6 +87,6 @@ export default function Header() {
           <Link href="/login" className={styles.loginBtn}>🔑 Login</Link>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }
