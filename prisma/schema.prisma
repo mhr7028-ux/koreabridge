@@ -117,6 +117,7 @@ model MatchRequest {
   id             String   @id @default(cuid())
   userName       String
   userEmail      String
+  contactInfo    String
   buddyId        String
   visitDate      String
   message        String?
