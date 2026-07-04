@@ -102,3 +102,24 @@ model Promotion {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+model Buddy {
+  id             String   @id @default(cuid())
+  name           String
+  image          String?
+  languages      String
+  description    String
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+model MatchRequest {
+  id             String   @id @default(cuid())
+  userName       String
+  userEmail      String
+  buddyId        String
+  visitDate      String
+  message        String?
+  status         String   @default("PENDING") // PENDING, CONTACTED, COMPLETED
+  createdAt      DateTime @default(now())
+}
