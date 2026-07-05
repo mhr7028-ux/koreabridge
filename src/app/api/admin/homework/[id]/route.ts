@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { sendPushNotification } from '@/lib/push';
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
@@ -30,6 +31,7 @@ export async function PATCH(request: Request, context: { params: Promise<{ id: s
       });
       
       // Bonus logic: Check if they had AI evaluation on the same day
+      let totalPointsAwarded = 10;
       const dateStr = submission.createdAt.toISOString().split('T')[0];
       const allToday = await prisma.homeworkSubmission.findMany({
         where: {
@@ -46,17 +48,32 @@ export async function PATCH(request: Request, context: { params: Promise<{ id: s
           where: { id: submission.userId },
           data: { points: { increment: 30 } }
         });
+        totalPointsAwarded += 30;
       }
+
+      await sendPushNotification(
+        submission.userId,
+        'Homework Approved! 🎉',
+        `You earned ${totalPointsAwarded} points for your homework.`,
+        '/dashboard'
+      );
 
     } else if (action === 'REJECT') {
       await prisma.homeworkSubmission.update({
         where: { id },
         data: { status: 'REJECTED' }
       });
+      await sendPushNotification(
+        submission.userId,
+        'Homework Status',
+        'Your homework submission was rejected. Please check and try again.',
+        '/dashboard'
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error('Homework admin API error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

@@ -71,6 +71,7 @@ model User {
   homeworks     HomeworkSubmission[]
   missionProofs MissionProof[]
   bookings      Booking[]
+  pushSubscriptions PushSubscription[]
 }
 
 model VerificationToken {
@@ -235,4 +236,14 @@ model Booking {
   bookingDate  String     // e.g., "2026-07-15"
   status       String     @default("PENDING") // PENDING, CONFIRMED, CANCELLED, COMPLETED
   createdAt    DateTime   @default(now())
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
 }

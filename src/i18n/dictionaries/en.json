@@ -1,0 +1,28 @@
+{
+  "header": {
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "admin": "Admin",
+    "points": "pts",
+    "study": {
+      "title": "STUDY",
+      "home": "Home",
+      "kbStudy": "KB Study",
+      "liveClass": "Live Class"
+    },
+    "community": {
+      "title": "COMMUNITY",
+      "kbBuddy": "KB Buddy",
+      "board": "Board"
+    },
+    "travel": {
+      "title": "TRAVEL",
+      "busanBuddy": "Busan Buddy",
+      "festival": "Festival",
+      "adventure": "Adventure",
+      "rentals": "Rentals",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "header": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "dashboard": "대시보드",
+    "admin": "관리자",
+    "points": "포인트",
+    "study": {
+      "title": "학습",
+      "home": "홈",
+      "kbStudy": "KB 학습",
+      "liveClass": "라이브 클래스"
+    },
+    "community": {
+      "title": "커뮤니티",
+      "kbBuddy": "KB 버디",
+      "board": "게시판"
+    },
+    "travel": {
+      "title": "여행",
+      "busanBuddy": "부산 버디",
+      "festival": "페스티벌",
+      "adventure": "어드벤쳐",
+      "rentals": "예약",
+      "contact": "고객센터"
+    }
+  }
+}

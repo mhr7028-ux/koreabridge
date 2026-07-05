@@ -4,10 +4,13 @@ import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { motion } from 'framer-motion';
 import styles from './Header.module.css';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Header() {
   const pathname = usePathname();
   const { data: session, status } = useSession();
+  const { t } = useLanguage();
 
   return (
     <motion.header 
@@ -25,16 +28,16 @@ export default function Header() {
 
       <nav className={styles.navTabs}>
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle} style={{ marginLeft: 0 }}>Study</span>
+          <span className={styles.navGroupTitle} style={{ marginLeft: 0 }}>{t.header.study.title}</span>
           <div className={styles.navGroupItems}>
             <Link href="/" className={`${styles.navBtn} ${pathname === '/' ? styles.active : ''}`}>
-              🏠 Home
+              🏠 {t.header.study.home}
             </Link>
             <Link href="/study/aeb" className={`${styles.navBtn} ${pathname.includes('/aeb') ? styles.active : ''}`}>
-              🛡️ KB Study
+              🛡️ {t.header.study.kbStudy}
             </Link>
             <Link href="/study/class" className={`${styles.navBtn} ${pathname.includes('/class') ? styles.active : ''}`}>
-              💻 Live Class
+              💻 {t.header.study.liveClass}
             </Link>
             <Link href="/study/gallery" className={`${styles.navBtn} ${pathname.includes('/gallery') ? styles.active : ''}`}>
               🎬 Gallery
@@ -45,7 +48,7 @@ export default function Header() {
         <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle}> Community</span>
+          <span className={styles.navGroupTitle}> {t.header.community.title}</span>
           <div className={styles.navGroupItems}>
             <a href="https://discord.gg/your-invite-link" target="_blank" rel="noopener noreferrer" className={styles.navBtn} title="KoreaBridge Main Campus">
               👾 Discord
@@ -59,57 +62,61 @@ export default function Header() {
         <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
-          <span className={styles.navGroupTitle}> Travel</span>
+          <span className={styles.navGroupTitle}> {t.header.travel.title}</span>
           <div className={styles.navGroupItems}>
             <Link href="/travel/buddy" className={`${styles.navBtn} ${pathname.includes('/buddy') ? styles.active : ''}`}>
-              🤝 Busan Buddy
+              🤝 {t.header.travel.busanBuddy}
             </Link>
             <Link href="/travel/adventure" className={`${styles.navBtn} ${pathname.includes('/adventure') ? styles.active : ''}`}>
-              📍 Adventure
+              📍 {t.header.travel.adventure}
             </Link>
             <Link href="/travel/booking" className={`${styles.navBtn} ${pathname.includes('/booking') ? styles.active : ''}`}>
-              🚲 Rentals
+              🚲 {t.header.travel.rentals}
             </Link>
             <Link href="/travel/festival" className={`${styles.navBtn} ${pathname.includes('/festival') ? styles.active : ''}`}>
-              🎉 Festival
+              🎉 {t.header.travel.festival}
             </Link>
             <Link href="/contact" className={`${styles.navBtn} ${pathname.includes('/contact') ? styles.active : ''}`}>
-              📞 Contact
+              📞 {t.header.travel.contact}
             </Link>
           </div>
         </div>
       </nav>
 
-      <div className={styles.authArea}>
-        {status === 'loading' ? (
-          <span style={{ color: '#9ca3af' }}>Loading...</span>
-        ) : session ? (
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-            <span style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              Hi,
-              {(session.user as any)?.role === 'admin' ? (
-                <Link href="/admin" style={{ color: '#ffc107', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px', borderRadius: '6px', background: 'rgba(255, 193, 7, 0.1)' }} title="Go to Admin Panel">
-                  <span>🛡️</span>
-                  <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
-                </Link>
-              ) : (
-                <Link href="/dashboard" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.1)', padding: '4px 10px', borderRadius: '6px' }} title="Go to My Page">
-                  <span>🎮</span>
-                  <span style={{ fontWeight: 'bold' }}>{session.user?.name} (My Page)</span>
-                </Link>
-              )}
-              <span style={{ marginLeft: '5px' }}>!</span>
-            </span>
-            <button
-              onClick={() => signOut()}
-              style={{ background: 'transparent', border: '1px solid rgba(239, 68, 68, 0.5)', color: '#ef4444', padding: '6px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' }}
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link href="/login" className={styles.loginBtn}>🔑 Login</Link>
-        )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+        <LanguageSwitcher />
+
+        <div className={styles.authArea}>
+          {status === 'loading' ? (
+            <span style={{ color: '#9ca3af' }}>Loading...</span>
+          ) : session ? (
+            <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+              <span style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                Hi,
+                {(session.user as any)?.role === 'admin' ? (
+                  <Link href="/admin" style={{ color: '#ffc107', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '4px 8px', borderRadius: '6px', background: 'rgba(255, 193, 7, 0.1)' }} title="Go to Admin Panel">
+                    <span>🛡️</span>
+                    <span style={{ fontWeight: 'bold' }}>{session.user?.name}</span>
+                  </Link>
+                ) : (
+                  <Link href="/dashboard" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.1)', padding: '4px 10px', borderRadius: '6px' }} title="Go to My Page">
+                    <span>🎮</span>
+                    <span style={{ fontWeight: 'bold' }}>{session.user?.name} (My Page)</span>
+                  </Link>
+                )}
+                <span style={{ marginLeft: '5px' }}>!</span>
+              </span>
+              <button
+                onClick={() => signOut()}
+                style={{ background: 'transparent', border: '1px solid rgba(239, 68, 68, 0.5)', color: '#ef4444', padding: '6px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' }}
+              >
+                {t.header.logout}
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className={styles.loginBtn}>🔑 {t.header.login}</Link>
+          )}
+        </div>
       </div>
     </motion.header>
   );

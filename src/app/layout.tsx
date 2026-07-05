@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Providers from '@/components/Providers';
 import SNSOnboardingModal from '@/components/SNSOnboardingModal';
+import PushNotificationManager from '@/components/PushNotificationManager';
 
 export const metadata: Metadata = {
   title: 'KoreaBridge - Learn Korean & Visit Busan',
@@ -29,6 +30,7 @@ export default function RootLayout({
               {children}
             </main>
             <SNSOnboardingModal />
+            <PushNotificationManager />
           </div>
         </Providers>
       </body>
