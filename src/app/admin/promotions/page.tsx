@@ -10,6 +10,8 @@ type Promotion = {
   pdfLink: string | null;
   couponImage: string | null;
   status: string;
+  enableReferral: boolean;
+  referralReward: number;
   createdAt: string;
 };
 
@@ -22,6 +24,8 @@ export default function AdminPromotionsPage() {
   const [youtubeUrl, setYoutubeUrl] = useState('');
   const [pdfLink, setPdfLink] = useState('');
   const [couponImage, setCouponImage] = useState('');
+  const [enableReferral, setEnableReferral] = useState(false);
+  const [referralReward, setReferralReward] = useState<number>(500);
 
   useEffect(() => {
     fetchPromotions();
@@ -50,7 +54,7 @@ export default function AdminPromotionsPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title, subtitle, youtubeUrl, pdfLink, couponImage
+          title, subtitle, youtubeUrl, pdfLink, couponImage, enableReferral, referralReward
         })
       });
       if (res.ok) {
@@ -59,6 +63,8 @@ export default function AdminPromotionsPage() {
         setYoutubeUrl('');
         setPdfLink('');
         setCouponImage('');
+        setEnableReferral(false);
+        setReferralReward(500);
         fetchPromotions();
       }
     } catch (error) {
@@ -129,6 +135,28 @@ export default function AdminPromotionsPage() {
               style={{ flex: 1, padding: '12px', borderRadius: '8px', background: '#374151', color: 'white', border: 'none' }}
             />
           </div>
+          
+          <div style={{ display: 'flex', gap: '15px', alignItems: 'center', background: '#374151', padding: '12px', borderRadius: '8px' }}>
+            <label style={{ color: 'white', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+              <input 
+                type="checkbox" 
+                checked={enableReferral} 
+                onChange={e => setEnableReferral(e.target.checked)}
+                style={{ width: '18px', height: '18px' }}
+              />
+              Enable Referral Reward
+            </label>
+            {enableReferral && (
+              <input 
+                type="number" 
+                placeholder="Reward Points (e.g. 500)" 
+                value={referralReward} 
+                onChange={e => setReferralReward(Number(e.target.value))}
+                style={{ width: '150px', padding: '8px', borderRadius: '6px', background: '#4b5563', color: 'white', border: 'none' }}
+              />
+            )}
+          </div>
+
           <button type="submit" style={{ padding: '12px', borderRadius: '8px', background: '#3b82f6', color: 'white', border: 'none', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px' }}>
             + Create Promotion
           </button>
@@ -140,6 +168,7 @@ export default function AdminPromotionsPage() {
           <thead>
             <tr style={{ background: '#374151', color: '#d1d5db' }}>
               <th style={{ padding: '15px' }}>Title</th>
+              <th style={{ padding: '15px' }}>Referral Event</th>
               <th style={{ padding: '15px' }}>Status</th>
               <th style={{ padding: '15px' }}>Date Added</th>
               <th style={{ padding: '15px' }}>Actions</th>
@@ -151,6 +180,15 @@ export default function AdminPromotionsPage() {
                 <td style={{ padding: '15px', color: '#fff' }}>
                   <strong>{promo.title}</strong>
                   <div style={{ fontSize: '0.85rem', color: '#9ca3af', marginTop: '4px' }}>{promo.subtitle}</div>
+                </td>
+                <td style={{ padding: '15px' }}>
+                  {promo.enableReferral ? (
+                    <span style={{ background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa', padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem' }}>
+                      Yes ({promo.referralReward} pts)
+                    </span>
+                  ) : (
+                    <span style={{ color: '#6b7280', fontSize: '0.8rem' }}>No</span>
+                  )}
                 </td>
                 <td style={{ padding: '15px' }}>
                   <button 

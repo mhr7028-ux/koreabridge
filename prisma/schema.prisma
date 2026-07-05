@@ -58,6 +58,10 @@ model User {
   snsType       String?
   snsId         String?
 
+  // Referral System
+  referralCode  String?   @unique
+  referredBy    String?
+
   // Gamification fields
   points        Int       @default(0)
   streak        Int       @default(0)
@@ -65,6 +69,8 @@ model User {
 
   createdAt     DateTime  @default(now())
   homeworks     HomeworkSubmission[]
+  missionProofs MissionProof[]
+  bookings      Booking[]
 }
 
 model VerificationToken {
@@ -106,6 +112,11 @@ model Promotion {
   pdfLink        String?
   couponImage    String?
   status         String   @default("ACTIVE") // "ACTIVE" or "PAST"
+  
+  // Referral settings
+  enableReferral Boolean  @default(false)
+  referralReward Int      @default(500)
+
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
@@ -176,4 +187,52 @@ model HomeworkSubmission {
   status      String   @default("PENDING") // PENDING, APPROVED, REJECTED
   pointsAwarded Int    @default(0)
   createdAt   DateTime @default(now())
+}
+
+// ------------------------------------
+// Busan Adventure & Booking Models
+// ------------------------------------
+
+model Mission {
+  id           String         @id @default(cuid())
+  title        String
+  location     String         // e.g., "Gwangalli", "Haeundae"
+  description  String
+  rewardPoints Int            @default(100)
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  proofs       MissionProof[]
+}
+
+model MissionProof {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  missionId String
+  mission   Mission  @relation(fields: [missionId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  status    String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  createdAt DateTime @default(now())
+}
+
+model RentalItem {
+  id          String    @id @default(cuid())
+  name        String    // e.g., "Electric Bike"
+  description String
+  price       Int       // Price in KRW
+  imageUrl    String?
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  bookings    Booking[]
+}
+
+model Booking {
+  id           String     @id @default(cuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rentalItemId String
+  rentalItem   RentalItem @relation(fields: [rentalItemId], references: [id], onDelete: Cascade)
+  bookingDate  String     // e.g., "2026-07-15"
+  status       String     @default("PENDING") // PENDING, CONFIRMED, CANCELLED, COMPLETED
+  createdAt    DateTime   @default(now())
 }

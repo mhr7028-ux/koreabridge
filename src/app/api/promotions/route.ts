@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { title, subtitle, youtubeUrl, pdfLink, couponImage, status } = await request.json();
+    const { title, subtitle, youtubeUrl, pdfLink, couponImage, status, enableReferral, referralReward } = await request.json();
 
     if (!title) {
       return NextResponse.json({ error: 'Title is required' }, { status: 400 });
@@ -36,6 +36,8 @@ export async function POST(request: Request) {
         pdfLink,
         couponImage,
         status: status || 'ACTIVE',
+        enableReferral: enableReferral || false,
+        referralReward: referralReward ? parseInt(referralReward, 10) : 500,
       },
     });
 

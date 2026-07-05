@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { sendDiscordNotification } from '@/lib/discord';
 
 export async function GET() {
   try {
@@ -41,8 +42,34 @@ export async function POST(request: Request) {
       },
     });
 
+    // 1. Update Gamification points and streak
+    if (session.user.email) {
+      await prisma.user.update({
+        where: { email: session.user.email },
+        data: {
+          points: { increment: 100 },
+          streak: { increment: 1 },
+          lastCheckIn: new Date()
+        }
+      });
+    }
+
+    // 2. Trigger Discord Notification
+    await sendDiscordNotification({
+      title: `🎉 ${session.user.name || '학생'}님이 새로운 과제를 완료했습니다!`,
+      description: `**과제명:** ${title}\n**AI 평가 점수:** ${score ?? 100}점\n\n> ${feedback?.substring(0, 100) || ''}...`,
+      color: 0x2ecc71, // Green color for success
+      url: "https://koreabridge.vercel.app/study/gallery",
+      thumbnailUrl: session.user.image || undefined,
+      fields: [
+        { name: "제출 미디어", value: mediaType || "youtube", inline: true },
+        { name: "AI 피드백", value: "앱의 갤러리에서 전체 피드백과 영상을 확인하세요!", inline: false }
+      ]
+    });
+
     return NextResponse.json(item, { status: 201 });
   } catch (error) {
+    console.error("Gallery POST Error:", error);
     return NextResponse.json({ error: 'Failed to create gallery item' }, { status: 500 });
   }
 }

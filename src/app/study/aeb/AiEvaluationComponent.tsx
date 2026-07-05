@@ -235,6 +235,60 @@ export default function AiEvaluationComponent() {
 
   return (
     <div style={{ background: '#111827', padding: '30px', borderRadius: '16px', border: '1px solid #374151' }}>
+      {/* Google AI Live API Links Panel */}
+      <div style={{ background: '#111827', padding: '25px', borderRadius: '16px', border: '1px solid #ff4081', marginBottom: '40px', boxShadow: '0 4px 20px rgba(255, 64, 129, 0.1)' }}>
+        <h2 style={{ color: '#ff4081', fontSize: '1.5rem', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          🎙️ 구글 AI 실시간 회화 & 번역
+        </h2>
+        <p style={{ color: '#9ca3af', marginBottom: '20px', lineHeight: '1.5' }}>
+          최신 구글 AI 모델과 실시간으로 대화를 나누거나, 실시간 번역 기능을 활용해 보세요.
+        </p>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <a 
+            href="https://aistudio.google.com/live?model=gemini-3.1-flash-live-preview" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '15px', 
+              background: '#1f2937', padding: '20px', borderRadius: '12px', 
+              border: '1px solid #374151', textDecoration: 'none', color: '#fff',
+              transition: 'all 0.2s', cursor: 'pointer'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.borderColor = '#ff4081'}
+            onMouseOut={(e) => e.currentTarget.style.borderColor = '#374151'}
+          >
+            <div style={{ fontSize: '2rem' }}>🗣️</div>
+            <div>
+              <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '5px' }}>Gemini 3.1 Flash Live</div>
+              <div style={{ color: '#9ca3af', fontSize: '0.9rem' }}>실시간 회화 연습하기</div>
+            </div>
+          </a>
+
+          <a 
+            href="https://aistudio.google.com/live?model=gemini-3.5-live-translate-preview" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '15px', 
+              background: '#1f2937', padding: '20px', borderRadius: '12px', 
+              border: '1px solid #374151', textDecoration: 'none', color: '#fff',
+              transition: 'all 0.2s', cursor: 'pointer'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.borderColor = '#00e5ff'}
+            onMouseOut={(e) => e.currentTarget.style.borderColor = '#374151'}
+          >
+            <div style={{ fontSize: '2rem' }}>🌐</div>
+            <div>
+              <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '5px' }}>Gemini 3.5 Live Translate</div>
+              <div style={{ color: '#9ca3af', fontSize: '0.9rem' }}>실시간 번역기 사용하기</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div style={{ borderTop: '1px solid #374151', paddingTop: '20px', marginBottom: '30px' }}></div>
+
       <h2 style={{ color: '#00e5ff', fontSize: '1.5rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
         🤖 AI 발음 평가 <span>(BETA)</span>
       </h2>

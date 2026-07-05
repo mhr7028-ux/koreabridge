@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import ReferralSection from './ReferralSection';
 
 // Make this page dynamically rendered on request
 export const dynamic = 'force-dynamic';
@@ -89,6 +90,13 @@ export default async function FestivalPromotionsPage() {
               </div>
 
             </div>
+            
+            {/* Referral System Box */}
+            {promo.enableReferral && (
+              <div style={{ padding: '0 40px 40px' }}>
+                <ReferralSection promotionId={promo.id} rewardPoints={promo.referralReward} />
+              </div>
+            )}
           </div>
         ))
       ) : (

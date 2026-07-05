@@ -11,10 +11,14 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { status } = await request.json();
+    const { status, enableReferral, referralReward } = await request.json();
     const updatedPromotion = await prisma.promotion.update({
       where: { id },
-      data: { status },
+      data: { 
+        status,
+        enableReferral,
+        referralReward: referralReward ? parseInt(referralReward, 10) : undefined
+      },
     });
 
     return NextResponse.json({ success: true, promotion: updatedPromotion });
