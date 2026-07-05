@@ -56,15 +56,36 @@
   padding: 5px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navGroup:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .navGroupTitle {
-  font-size: 12px;
-  font-weight: 600;
-  color: #a0aec0;
-  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1f3f9;
+  padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.navGroupItems {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.navGroup:hover .navGroupItems,
+.navGroupItems.expanded {
+  max-width: 600px;
+  opacity: 1;
 }
 
 .navDivider {
@@ -119,4 +140,48 @@
 
 .loginBtn:hover {
   background-color: rgba(255, 193, 7, 0.1);
+}
+
+@media (max-width: 768px) {
+  .appHeader {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .navTabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  .navGroup {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .navGroupItems {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  .navGroupItems a {
+    text-align: center;
+  }
+  .navGroup:hover .navGroupItems,
+  .navGroupItems.expanded {
+    max-height: 400px;
+    max-width: none;
+    padding-bottom: 10px;
+  }
+  .navDivider {
+    display: none;
+  }
+  .authArea {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
 }

@@ -26,51 +26,57 @@ export default function Header() {
       <nav className={styles.navTabs}>
         <div className={styles.navGroup}>
           <span className={styles.navGroupTitle} style={{ marginLeft: 0 }}>Study</span>
-          <Link href="/" className={`${styles.navBtn} ${pathname === '/' ? styles.active : ''}`}>
-            🏠 Home
-          </Link>
-          <Link href="/study/aeb" className={`${styles.navBtn} ${pathname.includes('/aeb') ? styles.active : ''}`}>
-            🛡️ KB Study
-          </Link>
-          <Link href="/study/class" className={`${styles.navBtn} ${pathname.includes('/class') ? styles.active : ''}`}>
-            💻 Live Class
-          </Link>
-          <Link href="/study/gallery" className={`${styles.navBtn} ${pathname.includes('/gallery') ? styles.active : ''}`}>
-            🎬 Gallery
-          </Link>
+          <div className={styles.navGroupItems}>
+            <Link href="/" className={`${styles.navBtn} ${pathname === '/' ? styles.active : ''}`}>
+              🏠 Home
+            </Link>
+            <Link href="/study/aeb" className={`${styles.navBtn} ${pathname.includes('/aeb') ? styles.active : ''}`}>
+              🛡️ KB Study
+            </Link>
+            <Link href="/study/class" className={`${styles.navBtn} ${pathname.includes('/class') ? styles.active : ''}`}>
+              💻 Live Class
+            </Link>
+            <Link href="/study/gallery" className={`${styles.navBtn} ${pathname.includes('/gallery') ? styles.active : ''}`}>
+              🎬 Gallery
+            </Link>
+          </div>
         </div>
 
         <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
           <span className={styles.navGroupTitle}> Community</span>
-          <a href="https://discord.gg/your-invite-link" target="_blank" rel="noopener noreferrer" className={styles.navBtn} title="KoreaBridge Main Campus">
-            👾 Discord
-          </a>
-          <a href="https://chat.whatsapp.com/your-invite-link" target="_blank" rel="noopener noreferrer" className={styles.navBtn} title="Emergency & Notice">
-            💬 WhatsApp
-          </a>
+          <div className={styles.navGroupItems}>
+            <a href="https://discord.gg/your-invite-link" target="_blank" rel="noopener noreferrer" className={styles.navBtn} title="KoreaBridge Main Campus">
+              👾 Discord
+            </a>
+            <a href="https://chat.whatsapp.com/your-invite-link" target="_blank" rel="noopener noreferrer" className={styles.navBtn} title="Emergency & Notice">
+              💬 WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
           <span className={styles.navGroupTitle}> Travel</span>
-          <Link href="/travel/buddy" className={`${styles.navBtn} ${pathname.includes('/buddy') ? styles.active : ''}`}>
-            🤝 Busan Buddy
-          </Link>
-          <Link href="/travel/adventure" className={`${styles.navBtn} ${pathname.includes('/adventure') ? styles.active : ''}`}>
-            📍 Adventure
-          </Link>
-          <Link href="/travel/booking" className={`${styles.navBtn} ${pathname.includes('/booking') ? styles.active : ''}`}>
-            🚲 Rentals
-          </Link>
-          <Link href="/travel/festival" className={`${styles.navBtn} ${pathname.includes('/festival') ? styles.active : ''}`}>
-            🎉 Festival
-          </Link>
-          <Link href="/contact" className={`${styles.navBtn} ${pathname.includes('/contact') ? styles.active : ''}`}>
-            📞 Contact
-          </Link>
+          <div className={styles.navGroupItems}>
+            <Link href="/travel/buddy" className={`${styles.navBtn} ${pathname.includes('/buddy') ? styles.active : ''}`}>
+              🤝 Busan Buddy
+            </Link>
+            <Link href="/travel/adventure" className={`${styles.navBtn} ${pathname.includes('/adventure') ? styles.active : ''}`}>
+              📍 Adventure
+            </Link>
+            <Link href="/travel/booking" className={`${styles.navBtn} ${pathname.includes('/booking') ? styles.active : ''}`}>
+              🚲 Rentals
+            </Link>
+            <Link href="/travel/festival" className={`${styles.navBtn} ${pathname.includes('/festival') ? styles.active : ''}`}>
+              🎉 Festival
+            </Link>
+            <Link href="/contact" className={`${styles.navBtn} ${pathname.includes('/contact') ? styles.active : ''}`}>
+              📞 Contact
+            </Link>
+          </div>
         </div>
       </nav>
 
