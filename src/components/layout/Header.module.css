@@ -2,13 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
+  padding: 10px 5%;
   background-color: rgba(10, 11, 16, 0.85);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 60px; /* Fixed small height */
 }
 
 .logoArea {
@@ -42,6 +43,7 @@
   margin: 0;
 }
 
+/* Desktop Navigation */
 .navTabs {
   display: flex;
   align-items: center;
@@ -106,6 +108,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .navBtn:hover {
@@ -122,6 +125,7 @@
 
 .authArea {
   display: flex;
+  align-items: center;
 }
 
 .loginBtn {
@@ -142,46 +146,90 @@
   background-color: rgba(255, 193, 7, 0.1);
 }
 
-@media (max-width: 768px) {
-  .appHeader {
-    flex-wrap: wrap;
-    padding: 10px;
-  }
+/* Mobile Hamburger Menu Icon */
+.hamburgerBtn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #f1f3f9;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Mobile Sidebar (Drawer) */
+.mobileSidebar {
+  position: fixed;
+  top: 60px; /* Below header */
+  right: -100%;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: rgba(10, 11, 16, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 5%;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.mobileSidebar.open {
+  right: 0;
+}
+
+.mobileSidebarGroup {
+  margin-bottom: 25px;
+}
+
+.mobileSidebarGroupTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #7c4dff;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  text-transform: uppercase;
+}
+
+.mobileSidebarItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobileSidebarBtn {
+  color: #f1f3f9;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobileSidebarBtn.active {
+  background: rgba(124, 77, 255, 0.2);
+  border: 1px solid rgba(124, 77, 255, 0.5);
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+@media (max-width: 900px) {
   .navTabs {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-    gap: 10px;
+    display: none; /* Hide desktop nav */
   }
-  .navGroup {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  .hamburgerBtn {
+    display: block; /* Show hamburger */
   }
-  .navGroupItems {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    max-width: none;
-    max-height: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-  }
-  .navGroupItems a {
-    text-align: center;
-  }
-  .navGroup:hover .navGroupItems,
-  .navGroupItems.expanded {
-    max-height: 400px;
-    max-width: none;
-    padding-bottom: 10px;
-  }
-  .navDivider {
-    display: none;
-  }
+  /* Optional: hide desktop login on mobile to put it inside menu?
+     Actually, let's keep LanguageSwitcher and AuthArea visible if they fit, or just hide authArea and put it in sidebar.
+  */
   .authArea {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
+    display: none;
   }
 }
