@@ -1,6 +1,6 @@
 {
   "name": "KoreaBridge",
-  "short_name": "KoreaBridge",
+  "short_name": "KB",
   "description": "Learn Korean with KoreaBridge",
   "start_url": "/",
   "display": "standalone",
