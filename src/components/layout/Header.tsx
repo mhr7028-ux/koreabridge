@@ -86,7 +86,6 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
           <span className={styles.navGroupTitle}> {t.header.community.title}</span>
@@ -100,7 +99,6 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={styles.navDivider}></div>
 
         <div className={styles.navGroup}>
           <span className={styles.navGroupTitle}> {t.header.travel.title}</span>

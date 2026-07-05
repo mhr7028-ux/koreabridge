@@ -47,53 +47,57 @@
 .navTabs {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px; /* Space between the text links */
 }
 
 .navGroup {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 5px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative; /* For absolute dropdown positioning */
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.navGroup:hover {
-  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 0; /* Increase hit area for hover */
 }
 
 .navGroupTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #f1f3f9;
-  padding: 8px 16px;
+  color: #a0aec0;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  transition: color 0.2s ease;
 }
 
+.navGroup:hover .navGroupTitle {
+  color: #f1f3f9;
+}
+
+/* The Dropdown Menu */
 .navGroupItems {
+  position: absolute;
+  top: 100%; /* Dropdown starts right below the navGroup */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px); /* Centered, slightly offset downwards initially */
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
   display: flex;
-  gap: 8px;
-  overflow: hidden;
-  max-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  
   opacity: 0;
-  transition: max-width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; /* Prevent clicks when hidden */
 }
 
-.navGroup:hover .navGroupItems,
-.navGroupItems.expanded {
-  max-width: 600px;
+/* Show dropdown on hover */
+.navGroup:hover .navGroupItems {
   opacity: 1;
-}
-
-.navDivider {
-  width: 1px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 
 .navBtn {
@@ -101,14 +105,16 @@
   border: 1px solid transparent;
   color: #a0aec0;
   font-family: 'Outfit', 'Noto Sans KR', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
+  display: block; /* Important for column layout */
+  text-align: left;
 }
 
 .navBtn:hover {
@@ -120,7 +126,6 @@
   background: rgba(124, 77, 255, 0.2);
   border: 1px solid rgba(124, 77, 255, 0.5);
   color: #f1f3f9;
-  box-shadow: 0 4px 12px rgba(124, 77, 255, 0.15);
 }
 
 .authArea {
@@ -226,9 +231,6 @@
   .hamburgerBtn {
     display: block; /* Show hamburger */
   }
-  /* Optional: hide desktop login on mobile to put it inside menu?
-     Actually, let's keep LanguageSwitcher and AuthArea visible if they fit, or just hide authArea and put it in sidebar.
-  */
   .authArea {
     display: none;
   }
